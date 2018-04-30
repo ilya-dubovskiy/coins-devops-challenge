@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - minikube
+    - docker-server
+    - todo-app
+    - nginx

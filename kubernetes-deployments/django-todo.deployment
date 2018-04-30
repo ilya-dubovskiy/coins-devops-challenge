@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Deployment
+namespace: default
+metadata:
+  name: todo
+spec:
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      hostNetwork: true
+      containers:
+      - name: django-todo
+        image: django-todo-coins
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+      - name: postgres
+        image: bitnami/postgresql:latest
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "postgres"
+        - name: POSTGRES_USER
+          value: "postgres"
+        ports:
+        - containerPort: 5432
