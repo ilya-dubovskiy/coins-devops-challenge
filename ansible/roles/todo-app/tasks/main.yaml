@@ -12,13 +12,6 @@
   command: docker system prune -a -f
   become: yes
 
-- name: Build app image
-  docker_image:
-    path: /tmp/coins/django-todo-dockerfile
-    nocache: yes
-    name: django-todo-coins
-    push: no
-
 - name: start minikube
   command: minikube start --vm-driver=none
   become: yes
